@@ -1,0 +1,6 @@
+obj/
+bin/
+packages/
+Upload/
+.vs/
+Properties/PublishProfiles/Publish godohosting.pubxml.user
