@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<title>MVVM Test</title>
+	</head>
+	<body>
+		<script>
+			class Mvvm {
+				constructor(){
+					
+				}
+
+				originalObjects = {};
+				currentObjects = {};
+
+				register(targetObject) {
+					this.currentObjects = targetObject;
+					this.originalObjects = this.clonseObject(targetObject);
+
+					setInterval(()=>{
+						if(this.currentObjects.first != this.originalObjects.first){
+							console.log('Changed..!!');
+							// 할 일을 하고,
+							this.originalObjects.first = this.currentObjects.first;
+						}
+					}, 1000);
+				}
+
+				remove(tempObject) {
+					this.originalObjects = this.originalObjects.filter((element) => element !== tempObject);
+				}
+
+				clonseObject(obj) {
+					var clone = {};
+
+					for (var key in obj) {
+						if (typeof obj[key] == "object" && obj[key] != null) {
+							clone[key] = cloneObject(obj[key]);
+						} else {
+							clone[key] = obj[key];
+						}
+					}
+
+					return clone;
+				}
+			}
+
+			mvvm = new Mvvm();
+
+			let viewModel = {
+				first: 'node',
+				second: 'second'
+			}
+			
+		</script>
+	</body>
+</html>
