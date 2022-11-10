@@ -3,6 +3,7 @@
 		<title>MVVM Test</title>
 	</head>
 	<body>
+		<input id="test"></input>
 		<script>
 			class Mvvm {
 				constructor(){
@@ -24,6 +25,12 @@
 							this.originalObjects.first = this.currentObjects.first;
 						}
 					}, 1000);
+
+					$('#test').change((e)=>{
+						this.currentObjects.first = $(e.target).val();
+						this.originalObjects.first = $(e.target).val();
+						console.log('changed..');
+					});
 				}
 
 				remove() {
@@ -55,5 +62,6 @@
 			}
 			
 		</script>
+		<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 	</body>
 </html>
