@@ -23,8 +23,9 @@
 							console.log('Changed..!!');
 							// 할 일을 하고,
 							this.originalObjects.first = this.currentObjects.first;
+							$('#test').val(this.currentObjects.first);
 						}
-					}, 1000);
+					}, 100);
 
 					$('#test').change((e)=>{
 						this.currentObjects.first = $(e.target).val();
