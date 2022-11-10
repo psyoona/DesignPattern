@@ -11,12 +11,13 @@
 
 				originalObjects = {};
 				currentObjects = {};
+				intervalId = -1;
 
 				register(targetObject) {
 					this.currentObjects = targetObject;
 					this.originalObjects = this.clonseObject(targetObject);
 
-					setInterval(()=>{
+					this.intervalId = setInterval(()=>{
 						if(this.currentObjects.first != this.originalObjects.first){
 							console.log('Changed..!!');
 							// 할 일을 하고,
@@ -25,8 +26,10 @@
 					}, 1000);
 				}
 
-				remove(tempObject) {
-					this.originalObjects = this.originalObjects.filter((element) => element !== tempObject);
+				remove() {
+					clearInterval(this.intervalId);
+					this.originalObjects = null;
+					this.currentObjects = null;
 				}
 
 				clonseObject(obj) {
